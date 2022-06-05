@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to RasperberryPi Flask {% endblock %}</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th style="width:50%">GPIO</th>
+                <th style="width:10%">port number</th>
+                <th style="width:10%">button</th>
+            </tr>
+            <tr>
+                <td style="width:70%" rowspan="3">
+                    <img src= "/static/header_pinout.jpg">
+                </td>
+
+                <td style="width:70%">
+                    <input name="add_port_number" style="width:20%">
+                </td>
+                <td style="width:20%">
+                    <button> Add Switcher</button>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:70%">
+                    <input name="port" style="width:10%">
+                </td>
+                <td style="width:20%">
+                    <label class="switch">
+                        OFF<input type="checkbox" unchecked>ON
+                        <span class="slider round"></span>
+                    </label>
+                </td>
+            </tr>
+        <tr>
+                <td style="width:70%">
+                    <input name="port" style="width:10%">
+                </td>
+                <td style="width:20%">
+                    <label class="switch">
+                        OFF<input type="checkbox" unchecked>ON
+                        <span class="slider round"></span>
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+{% for post in posts %}
+<a href="{{ url_for('post', post_id=post['id']) }}">
+            <h2>{{ post['title'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+        <a href="{{ url_for('edit', id=post['id']) }}">
+            <span class="badge badge-warning">Edit</span>
+        </a>
+        <hr>
+    {% endfor %}
+
+{% endblock %}
